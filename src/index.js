@@ -1,16 +1,9 @@
-exports.min = (array) => {
-  if (!array || !array.length) return 0;
-  array.sort((a, b) => a - b);
-  return array[0];
-}
+const isValidParams = (params) => !(!params || !params.length);
+const arraySort = (array) => array.sort((a, b) => a - b);
 
-exports.max = function max (array) {
-    if (!array || !array.length) return 0;
-    array.sort((a, b) => a - b);
-    return array[array.length - 1];
-}
 
-exports.avg = function avg (array) {
-    if (!array || !array.length) return 0;
-    return array.reduce((acc, el)=>acc+el,0)/array.length;
-}
+exports.min = (array) => isValidParams(array) ? arraySort(array)[0] : 0;
+
+exports.max = (array) => isValidParams(array) ? arraySort(array)[array.length - 1] : 0;
+
+exports.avg = (array) => isValidParams(array) ? array.reduce((acc, el)=>acc+el,0)/array.length : 0;
